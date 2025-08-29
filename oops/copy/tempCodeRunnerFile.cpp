@@ -8,7 +8,7 @@ public:
     // double cgpa;
     double* cgpaPtr; //not pointing anywere
 
-    Student(string name , double cgpa){
+    Student(string name , int cgpa){
         this->name = name;
         // this->cgpa = cgpa;
         cgpaPtr = new double; //dynamic memory allocation...pointing to some memory in heap
@@ -19,10 +19,7 @@ public:
     Student(Student &s){
         cout << "custom copy constructor called" << endl;
         this->name = s.name;
-        cgpaPtr = new double; //allocate new memory
-        *(this->cgpaPtr) = *(s.cgpaPtr); //copy the value.....
-
-        //this->cgpaPtr = s.cgpaPtr; //shallow copy...copying the address....here we get the problem because the adress is copied not the value
+        this->cgpaPtr = s.cgpaPtr; //shallow copy...copying the address....here we get the problem because the adress is copied not the value
     }
 
     void display() {
@@ -32,13 +29,12 @@ public:
 };
 
 int main(){
-    Student s1("harsh", 8.9);
+    Student s1("harsh", 22);
 
     Student s2 = s1; //shallow copy
-    s1.display();//cgpa 8.9
+    s1.display();
     *(s2.cgpaPtr) = 9.2;
-    s1.display();//cgpa 8.9.....this is correct now because we are doing deep copy
-    s2.display();//cgpa 9.2
+    s1.display();
 
 
 

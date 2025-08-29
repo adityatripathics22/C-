@@ -8,7 +8,7 @@ public:
     // double cgpa;
     double* cgpaPtr; //not pointing anywere
 
-    Student(string name , int cgpa){
+    Student(string name , double cgpa){
         this->name = name;
         // this->cgpa = cgpa;
         cgpaPtr = new double; //dynamic memory allocation...pointing to some memory in heap
@@ -23,18 +23,19 @@ public:
     }
 
     void display() {
-        cout << "Name: " << name << endl << "Age: " << *cgpaPtr << endl;
+        cout << "Name: " << name << endl << "cgpa: " << *cgpaPtr << endl;
     }
 
 };
 
 int main(){
-    Student s1("harsh", 22);
+    Student s1("harsh", 8.9);
 
     Student s2 = s1; //shallow copy
-    s1.display();
+    s1.display(); //cgpa 8.9
     *(s2.cgpaPtr) = 9.2;
-    s1.display();
+    s1.display();//cgpa 9.2.....this is the problem it should not change because we are not changing s1..
+    s2.display();//cgpa 9.2
 
 
 
