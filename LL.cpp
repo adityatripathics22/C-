@@ -39,3 +39,5 @@ int main() {
     cout << (*w).data << '\n';
     cout << w-> data ;
 }
+//if its and object the you can directly use .
+//but if your are mkaing a pointer of it then first you need to deference it to get the values..use -> or (*).
