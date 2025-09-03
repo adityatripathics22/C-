@@ -61,16 +61,46 @@ void print(Node* temp){
     cout << endl;
 }
 
+Node* removeshead(Node* head){
+    if(head == NULL){
+        return head;
+    }
+    Node* temp = head;
+    head = head-> next;
+    delete temp;
+    return head;
+}
+
+Node* removestail(Node* head){
+    if(head == NULL || head->next == NULL ){
+        // If list is empty or has only one node, return head (or could delete head if needed)
+        return head;
+    }
+    Node* temp = head;
+    // Traverse to the second last node
+    while(temp->next->next != NULL){
+        temp = temp->next;
+    }
+    // temp now points to second last node
+    delete temp->next;
+    temp->next = nullptr;
+    return head;
+}
 
 int main(){
-    vector<int> arr = {2,4,6,8};
+    vector<int> arr = {2,4 , 6 ,8};
     Node* head = Arr2LL(arr);
     //cout << head->data;
     Node* temp = head;
-    
-    cout << endl << lengthOfAll(head) << endl;
+     
+    // cout << endl << lengthOfAll(head) << endl;
 
-    cout << checkIfPresent(head , 6);
+    // cout << checkIfPresent(head , 6);
+
+    // head = removeshead(head);
+    head = removestail(head);
+    print(head);
+
 }
 
 // 🔹 Why we usually use new for linked lists
