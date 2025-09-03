@@ -86,7 +86,7 @@ Node* removestail(Node* head){
     temp->next = nullptr;
     return head;
 }
-
+ 
 int main(){
     vector<int> arr = {2,4 , 6 ,8};
     Node* head = Arr2LL(arr);
