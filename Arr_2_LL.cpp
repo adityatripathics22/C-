@@ -30,15 +30,47 @@ Node* Arr2LL(vector<int> arr){
     return head;
 
 }
+
+int lengthOfAll(Node* head){
+    int cnt = 0 ;
+    Node* temp = head;
+    while (temp)
+    {
+        temp = temp -> next;
+        cnt++;
+    }
+    return cnt;
+    
+    
+}
+
+int checkIfPresent(Node* head ,int val){
+    Node* temp = head;
+    while(temp){
+        if(temp -> data == val){
+            return 1;
+        }temp = temp->next;
+    }return 0;
+}
+
+void print(Node* temp){
+    while(temp){
+        cout << temp -> data << " " ;
+        temp = temp -> next;
+    }
+    cout << endl;
+}
+
+
 int main(){
     vector<int> arr = {2,4,6,8};
     Node* head = Arr2LL(arr);
-    cout << head->data;
+    //cout << head->data;
     Node* temp = head;
-    while(temp){
-        cout << temp -> data << " ";
-        temp = temp -> next;
-    }
+    
+    cout << endl << lengthOfAll(head) << endl;
+
+    cout << checkIfPresent(head , 6);
 }
 
 // 🔹 Why we usually use new for linked lists
