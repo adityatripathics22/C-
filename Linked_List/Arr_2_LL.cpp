@@ -179,9 +179,29 @@ Node* insertPosition(Node* head , int el , int k){
     }return head; 
 }
 
+Node* insertBeforeVal(Node* head , int el , int val){
+    if(head == NULL){
+        return NULL;
+    }
+    if(head->data == val){
+        return new Node(el,head);
+    }
+    Node* temp = head;
+    while(temp-> next != NULL){
+        if(temp->next->data == val){
+            Node* x = new Node(el , temp-> next);
+            temp->next = x;
+            break;
+        }
+        temp = temp->next;
+
+
+    }return head;
+}
+
 
 int main(){
-    vector<int> arr = {20,40 , 60 ,80};
+    vector<int> arr = {2,4 , 6 ,8};
     Node* head = Arr2LL(arr);
     //cout << head->data;
     // Node* temp = head;
@@ -196,6 +216,8 @@ int main(){
     // head = removeK(head , 2);
 
     //head = removeele(head , 40);
+
+    head = insertBeforeVal(head , 5 , 6);
 
 
     print(head);
