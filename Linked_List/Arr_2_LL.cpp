@@ -97,9 +97,9 @@ Node* removeK(Node* head , int  k){
         delete temp;
         return head;
     }
-    int cnt = 1;
-    Node* temp = head->next;
-    Node* prev = head;
+    int cnt = 1; //0
+    Node* temp = head->next; //head
+    Node* prev = head; //NULL 
     while(temp != NULL){
         cnt++;
         if(cnt == k){
@@ -111,8 +111,53 @@ Node* removeK(Node* head , int  k){
     }
     return head;
 }
+
+Node* removeele(Node* head , int  ele){
+    if(head == NULL){
+        return head;
+    }
+    if(head->data ==ele){
+        Node*temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
+    Node* temp = head->next; //head
+    Node* prev = head; //NULL 
+    while(temp != NULL){
+        if(temp->data == ele){
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
+
+Node* inserthead(Node* head ,int val){
+    Node* temp = new Node(val , head);
+    return temp;
+
+}
+
+Node* inserttail(Node* head , int val){
+    if(head == NULL){
+        return new Node(val);
+    }
+    Node* temp = head;
+    while(temp->next != NULL){
+        temp = temp->next;
+
+    }
+    Node* newNode = new Node(val);
+    temp->next = newNode;
+    return head;
+}
+
+Node* insertEle(Node* head ,  )
 int main(){
-    vector<int> arr = {2,4 , 6 ,8};
+    vector<int> arr = {20,40 , 60 ,80};
     Node* head = Arr2LL(arr);
     //cout << head->data;
     // Node* temp = head;
@@ -124,8 +169,13 @@ int main(){
     // head = removeshead(head);
     // head = removestail(head);
 
-    head = removeK(head , 2);
+    // head = removeK(head , 2);
+
+    //head = removeele(head , 40);
+
+
     print(head);
+
 
 }
 
