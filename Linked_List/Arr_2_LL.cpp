@@ -155,7 +155,31 @@ Node* inserttail(Node* head , int val){
     return head;
 }
 
-Node* insertEle(Node* head ,  )
+Node* insertPosition(Node* head , int el , int k){
+    if(head == NULL){
+        if(k == 1){
+            return new Node(el);
+        }else{
+            return head;    //NOT POSSIBLE
+        }
+    }
+    if(k==1){
+        return new Node(el , head);
+    }
+    int cnt =1;
+    Node* temp = head->next;
+    while(temp->next != NULL){
+        if(cnt == (k-1)){
+            Node* x = new Node(el, temp->next);
+            temp->next = x;
+            break;
+        }
+        temp = temp->next;
+
+    }return head; 
+}
+
+
 int main(){
     vector<int> arr = {20,40 , 60 ,80};
     Node* head = Arr2LL(arr);
