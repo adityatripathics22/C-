@@ -86,19 +86,45 @@ Node* removestail(Node* head){
     temp->next = nullptr;
     return head;
 }
- 
+
+Node* removeK(Node* head , int  k){
+    if(head == NULL){
+        return head;
+    }
+    if(k == 1){
+        Node*temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
+    int cnt = 1;
+    Node* temp = head->next;
+    Node* prev = head;
+    while(temp != NULL){
+        cnt++;
+        if(cnt == k){
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
 int main(){
     vector<int> arr = {2,4 , 6 ,8};
     Node* head = Arr2LL(arr);
     //cout << head->data;
-    Node* temp = head;
+    // Node* temp = head;
      
     // cout << endl << lengthOfAll(head) << endl;
 
     // cout << checkIfPresent(head , 6);
 
     // head = removeshead(head);
-    head = removestail(head);
+    // head = removestail(head);
+
+    head = removeK(head , 2);
     print(head);
 
 }
