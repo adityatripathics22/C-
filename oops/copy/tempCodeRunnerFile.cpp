@@ -1,42 +1,27 @@
 #include <iostream>
-#include <string>
-using namespace std;
+// using namespace std;
 
-class Student{
-public:
-    string name;
-    // double cgpa;
-    double* cgpaPtr; //not pointing anywere
+// class A {
+// public:
+//     static int x;   // Shared by all objects
 
-    Student(string name , int cgpa){
-        this->name = name;
-        // this->cgpa = cgpa;
-        cgpaPtr = new double; //dynamic memory allocation...pointing to some memory in heap
-        *cgpaPtr = cgpa;
+//     void incx() {
+//         x = x + 1;
+//     }
+// };
 
-    }
+// int A::x = 0;   // Definition + initialization (needed once)
 
-    Student(Student &s){
-        cout << "custom copy constructor called" << endl;
-        this->name = s.name;
-        this->cgpaPtr = s.cgpaPtr; //shallow copy...copying the address....here we get the problem because the adress is copied not the value
-    }
+// int main() {
+//     A obj1, obj2;
 
-    void display() {
-        cout << "Name: " << name << endl << "Age: " << *cgpaPtr << endl;
-    }
+//     obj1.incx();   // increases shared x → now x = 1
+//     obj2.incx();   // increases shared x → now x = 2
 
-};
+//     cout << A::x << endl;   // Access static via class name → prints 2
+//     cout << obj1.x << endl; // Also works → prints 2
+//     cout << obj2.x << endl; // Same shared value → prints 2
 
-int main(){
-    Student s1("harsh", 22);
+//     return 0;
+// }
 
-    Student s2 = s1; //shallow copy
-    s1.display();
-    *(s2.cgpaPtr) = 9.2;
-    s1.display();
-
-
-
-    return 0;
-}
